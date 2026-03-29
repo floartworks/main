@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convocation Théorie Ultime</title>
+  <style>
+    :root {
+      --page-width: 1000px;
+      --text: #ece4d6;
+      --muted: #c9bea9;
+      --line: rgba(220, 205, 176, 0.515);
+      --accent: #b94a42;
+      --shadow: rgba(0, 0, 0, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #000000;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .page {
+      position: relative;
+      width: min(100%, var(--page-width));
+      min-height: 1500px;
+      padding: 30px 42px 70px;
+      overflow: hidden;
+      background-color: #11111100;
+      background-image: url("./fond_texture2.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 5px 30px 80px var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      isolation: isolate;
+    }
+
+    /* Vignettage et voile sombre par-dessus le fond */
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, transparent 42%, rgba(0,0,0,0.18) 72%, rgba(0,0,0,0.58) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.08) 22%, rgba(0,0,0,0.12) 60%, rgba(0,0,0,0.24));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--line) 8%, var(--line) 92%, transparent);
+      margin: 16px 0;
+    }
+
+    .rule.thick {
+      height: 2px;
+      opacity: 0.9;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(1.45rem, 2vw, 1.50rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: #f1e8da;
+    }
+
+    .title .accent {
+      color: var(--accent);
+    }
+
+    .subline,
+    .small-note {
+      color: var(--muted);
+    }
+
+    p,
+    li {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .highlight {
+      font-weight: 800;
+      color: #fffaf1;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .symbol-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 10px;
+    }
+
+    .symbol {
+      width: 180px;
+      opacity: 0.8;
+      filter: drop-shadow(0 3px 4px rgba(0,0,0,0.5));
+    }
+
+    ul,
+    ol {
+      margin: 12px 0 0 22px;
+      padding-left: 12px;
+    }
+
+    .warning-title {
+      display: inline-block;
+      color: #b94a42;
+      border-top: 1px solid rgba(185, 74, 66, 0.7);
+      border-bottom: 1px solid rgba(185, 74, 66, 0.7);
+      padding: 6px 10px;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .danger {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 28px;
+      font-style: italic;
+    }
+
+    /*
+      Intégration future du sceau:
+      - remplace simplement l'image ci-dessous par ton fichier final
+      - exemple: src="./sceau.png"
+    */
+    .seal {
+      position: absolute;
+      right: 20px;
+      bottom: 80px;
+      transform: rotate(-12deg);
+      width: min(20vw, 220px);
+      z-index: 3;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,0.55));
+      user-select: none;
+      pointer-events: none;
+    }
+
+   
+    @media (max-width: 820px) {
+      body {
+        padding: 10px;
+      }
+
+      .page {
+        padding: 20px 18px 36px;
+        min-height: 1200px;
+      }
+
+      .seal {
+        right: 16px;
+        bottom: 85px;
+        width: 120px;
+      }
+
+      .seal-mark {
+        right: -26px;
+        bottom: 18px;
+        width: 400px;
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="content">
+      <div class="rule"></div>
+
+      <h1 class="title">
+        <span class="accent">[URGENT]</span> Convocation officielle – Programme "THÉORIE ULTIME"
+      </h1>
+
+      <div class="rule"></div>
+
+      <p class="subline">
+        Dossier classé : <span class="highlight">CONFIDENTIEL</span> – <span class="italic">diffusion restreinte</span>
+      </p>
+
+      <div class="rule thick"></div>
+
+      <div class="symbol-wrap">
+        <!-- Remplace ce SVG inline par une image si tu préfères -->
+        <svg class="symbol" viewBox="0 0 240 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M120 8L158 70H82L120 8Z" stroke="#9e927d" stroke-width="2" opacity="0.8"/>
+          <path d="M103 43C108 35 113 32 120 32C127 32 132 35 137 43C132 51 127 54 120 54C113 54 108 51 103 43Z" stroke="#9e927d" stroke-width="2" opacity="0.8"/>
+          <circle cx="120" cy="43" r="5" fill="#9e927d" opacity="1"/>
+          <path d="M32 41H82" stroke="#9e927d" stroke-width="1.2" opacity="1"/>
+          <path d="M158 41H208" stroke="#9e927d" stroke-width="1.2" opacity="1"/>
+          <path d="M22 41C28 35 34 35 40 41C34 47 28 47 22 41Z" stroke="#9e927d" stroke-width="1.2" opacity="1"/>
+          <path d="M200 41C206 35 212 35 218 41C212 47 206 47 200 41Z" stroke="#9e927d" stroke-width="1.2" opacity="1"/>
+        </svg>
+      </div>
+
+      <p><span class="highlight">Bonjour,</span></p>
+
+      <p>
+        Suite à l'interception de plusieurs signaux incohérents dans votre zone, votre profil a été
+        <span class="highlight">sélectionné</span> pour participer à la
+        <span class="highlight">Session d'Évaluation n°26</span> du programme
+        <span class="highlight">THÉORIE ULTIME</span> qui se déroulera le
+        <span class="highlight">Vendredi 17 Avril 2026</span>.
+      </p>
+
+      <div class="rule"></div>
+
+      <p>Merci de lire attentivement ce message.</p>
+      <p>Toute fuite sera... <span class="italic">consignée</span>.</p>
+
+      <div class="rule"></div>
+
+      <h2 class="section-title">Votre objectif :</h2>
+      <p>
+        <span class="highlight">Préparer une présentation Powerpoint</span> d'une
+        <span class="italic">théorie du complot 100% fictive</span> (2 à 4 minutes),
+        à présenter lors de la cérémonie.
+      </p>
+
+      <div class="rule"></div>
+
+      <h2 class="section-title">Format recommandé :</h2>
+      <ul>
+        <li>Postulat : <span class="italic">"Et si..."</span></li>
+        <li><span class="highlight">3 preuves absurdes</span> <span class="italic">(objet, image, capture, coïncidence "troublante")</span></li>
+        <li>Le grand plan <span class="italic">(qui contrôle quoi, et pourquoi)</span></li>
+        <li>Un <span class="highlight">signe secret</span> <span class="italic">à révéler au moment opportun</span></li>
+      </ul>
+
+      <div class="rule"></div>
+
+      <p class="warning-title">⚠ Restrictions de sécurité <span class="italic">(sauf validation par le guide suprême)</span></p>
+      <ul>
+        <li>Pas de <span class="italic">politique réelle</span></li>
+        <li>Pas de <span class="italic">groupes ciblés</span></li>
+        <li>Pas de <span class="italic">propos haineux</span></li>
+      </ul>
+
+      <div class="rule"></div>
+
+      <h2 class="section-title">Procédure d'accès :</h2>
+      <p>
+        À votre arrivée, vous devrez annoncer votre <span class="highlight">nom de code</span> et ensuite :<br />
+      </p>
+
+      <ul>
+        <li>Vous soumettre au contrôle des ondes : <span class="highlight">rapide, indolore </span><span class="italic">(probablement)</span>.</li>
+        <li>Des <span class="highlight"> lunettes de soleil</span>.</li>
+        <li>Un signe distinctif le jour de la réception : une paire de <span class="highlight">chaussettes rouges</span>.</li>
+        <li>La couleur ROSE est <span class="danger">STRICTEMENT INTERDITE</span>.</li>
+        
+      </ul>
+
+      <div class="rule"></div>
+
+      <p>Répondez à ce mail avec :</p>
+      <ol>
+        <li>Votre <span class="highlight">nom de code</span></li>
+        <li>Un indice sur votre théorie <span class="italic">(1 phrase max)</span> qui devra être validée en amont par <span class="highlight">le Guide Ultime</span></li>
+        <li>Votre signe secret <span class="italic">(sans l'expliquer)</span></li>
+      </ol>
+
+      <p>À très bientôt.</p>
+
+      <div class="footer">
+        <p><span class="highlight">La secrétaire du Gardien de la Théorie Ultime</span></p>
+        <p class="small-note">Cellule d’Observation – Département des Coïncidences</p>
+      </div>
+
+      <div class="rule"></div>
+
+      <p class="small-note">P.S : Si vous avez reçu ce message, merci de ne pas en parler.</p>
+    </div>
+
+    <div class="seal-mark" aria-hidden="true"></div>
+
+    <!--
+      IMPORTANT:
+      1. Place ton image dans le même dossier que ce fichier HTML
+      2. Renomme-la par exemple en "sceau.png"
+      3. Décommente la balise img ci-dessous et ajuste le chemin si besoin
+    -->
+    <img class="seal" src="./sceau.png" alt="Sceau rouge" />
+  </main>
+</body>
+</html>
