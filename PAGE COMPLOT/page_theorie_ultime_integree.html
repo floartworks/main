@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Convocation Théorie Ultime</title>
+  <style>
+    :root {
+      --paper: #e6dfd2;
+      --muted: rgba(230, 223, 210, 0.82);
+      --line: rgba(226, 214, 191, 0.24);
+      --line-strong: rgba(236, 225, 205, 0.34);
+      --alert: #c84b3f;
+      --shadow: rgba(0, 0, 0, 0.65);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--paper);
+      background: #050505;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .page {
+      position: relative;
+      width: min(100%, 980px);
+      min-height: 1480px;
+      padding: 38px 58px 70px;
+      background-image:
+        radial-gradient(circle at center, rgba(255,255,255,0.06), transparent 38%),
+        linear-gradient(to bottom, rgba(0,0,0,0.22), rgba(0,0,0,0.28)),
+        url('fond_texture.png');
+      background-size: cover, cover, cover;
+      background-position: center, center, center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+      isolation: isolate;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 32%, rgba(255,255,255,0.035), transparent 26%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02), transparent 35%),
+        radial-gradient(circle at 50% 50%, transparent 56%, rgba(0,0,0,0.42) 100%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 0 0 120px rgba(0,0,0,0.52), inset 0 0 12px rgba(255,255,255,0.02);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .rule {
+      height: 1px;
+      width: 100%;
+      background: var(--line);
+      margin: 0 0 34px;
+    }
+
+    .rule.tight { margin-bottom: 16px; }
+    .rule.mid { margin: 22px 0; }
+    .rule.large { margin: 30px 0; }
+    .rule.low { margin: 42px 0 18px; }
+    .rule.bottom { margin: 36px 0 16px; }
+
+    .headline {
+      font-size: clamp(28px, 2.6vw, 40px);
+      line-height: 1.2;
+      margin: 0;
+      font-weight: 700;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.45);
+    }
+
+    .headline .alert { color: var(--alert); }
+    .muted {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .subtle { font-style: italic; }
+    .strong { font-weight: 700; color: #f3ede2; }
+    .accent { color: var(--alert); font-weight: 700; }
+
+    p {
+      font-size: 24px;
+      line-height: 1.45;
+      margin: 0 0 18px;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.25);
+    }
+
+    .intro { margin-top: 24px; }
+
+    .symbol-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px 0 30px;
+      color: rgba(218, 207, 187, 0.34);
+    }
+
+    .symbol-wrap::before,
+    .symbol-wrap::after {
+      content: "";
+      width: 120px;
+      height: 1px;
+      background: var(--line);
+      margin: 0 18px;
+    }
+
+    .symbol {
+      font-size: 54px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.35));
+    }
+
+    h2, h3 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--paper);
+    }
+
+    h2.section-title {
+      color: var(--alert);
+      font-size: 26px;
+    }
+
+    ul, ol {
+      margin: 0 0 10px 0;
+      padding-left: 30px;
+    }
+
+    li {
+      font-size: 22px;
+      line-height: 1.5;
+      margin: 8px 0;
+    }
+
+    .warning-title {
+      display: inline-block;
+      color: #f1e7d8;
+      padding: 6px 10px 8px;
+      border-top: 1px solid rgba(230, 80, 65, 0.45);
+      border-bottom: 1px solid rgba(230, 80, 65, 0.28);
+      margin-bottom: 12px;
+    }
+
+    .warning-title .icon,
+    .warning-title .label {
+      color: var(--alert);
+      font-weight: 700;
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding-right: 180px;
+    }
+
+    .footer p:last-child,
+    .small {
+      font-size: 18px;
+      color: rgba(230,223,210,0.75);
+    }
+
+    .seal {
+      position: absolute;
+      right: 34px;
+      bottom: 108px;
+      width: 220px;
+      filter: drop-shadow(0 16px 18px rgba(0,0,0,0.55));
+      z-index: 2;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .seal-mark {
+      position: absolute;
+      right: -8px;
+      bottom: 32px;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      border: 2px solid rgba(180,170,155,0.08);
+      opacity: 0.16;
+      transform: rotate(-20deg);
+      box-shadow:
+        inset 0 0 0 20px rgba(180,170,155,0.03),
+        inset 0 0 0 62px rgba(180,170,155,0.02);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 26px 26px 56px;
+        min-height: auto;
+      }
+
+      p { font-size: 19px; }
+      li { font-size: 18px; }
+      .muted { font-size: 15px; }
+      .footer { padding-right: 120px; }
+      .seal {
+        width: 140px;
+        right: 18px;
+        bottom: 84px;
+      }
+      .seal-mark {
+        width: 220px;
+        height: 220px;
+        right: -10px;
+        bottom: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="rule tight"></div>
+
+    <h1 class="headline"><span class="alert">[URGENT]</span> Convocation officielle – Programme "THÉORIE ULTIME"</h1>
+
+    <div class="rule mid"></div>
+
+    <p class="muted">Dossier classé : <span class="strong">CONFIDENTIEL</span> – <span class="subtle">diffusion restreinte</span></p>
+
+    <div class="rule large"></div>
+
+    <div class="symbol-wrap"><div class="symbol">△◉</div></div>
+
+    <p class="intro"><span class="strong">Bonjour,</span></p>
+
+    <p>
+      Suite à l'interception de plusieurs signaux incohérents dans votre zone, votre profil a été
+      <span class="strong">sélectionné</span> pour participer à la <span class="strong">Session d'Évaluation n°26</span>
+      du programme <span class="strong">THÉORIE ULTIME</span> qui se déroulera le
+      <span class="strong">Vendredi 17 Avril 2026</span>.
+    </p>
+
+    <div class="rule low"></div>
+
+    <p>Merci de lire attentivement ce message.</p>
+    <p>Toute fuite sera... <span class="subtle">consignée</span>.</p>
+
+    <div class="rule large"></div>
+
+    <h2 class="section-title">Votre objectif :</h2>
+    <p>
+      <span class="strong">Préparer une présentation powerpoint</span> d'une
+      <span class="subtle">théorie du complot 100% fictive</span> (2 à 4 minutes), à présenter lors de la cérémonie.
+    </p>
+
+    <div class="rule large"></div>
+
+    <h3>Format recommandé :</h3>
+    <ul>
+      <li>Postulat : <span class="subtle">"Et si..."</span></li>
+      <li><span class="strong">3 preuves absurdes</span> <span class="subtle">(objet, image, capture, coïncidence "troublante")</span></li>
+      <li>Le grand plan <span class="subtle">(qui contrôle quoi, et pourquoi)</span></li>
+      <li>Un <span class="strong">signe secret</span> <span class="subtle">à révéler au moment opportun</span></li>
+    </ul>
+
+    <div class="rule large"></div>
+
+    <h3 class="warning-title"><span class="icon">⚠</span> <span class="label">Restrictions de sécurité</span> <span class="subtle">(sauf validation par le guide suprême)</span></h3>
+    <ul>
+      <li>Pas de <span class="subtle">politique réelle</span></li>
+      <li>Pas de <span class="subtle">groupes ciblés</span></li>
+      <li>Pas de <span class="subtle">propos haineux</span></li>
+    </ul>
+
+    <div class="rule large"></div>
+
+    <h3>Procédure d'accès :</h3>
+    <p>
+      À votre arrivée, vous devrez annoncer votre <span class="strong">nom de code</span> et vous soumettre au
+      contrôle des ondes :<br>
+      - rapide, indolore <span class="subtle">(probablement)</span>
+    </p>
+
+    <ul>
+      <li>Un signe distinctif : une paire de <span class="strong">chaussettes rouges</span></li>
+      <li>La <span class="accent">couleur rose</span> est <span class="accent">STRICTEMENT INTERDITE</span></li>
+    </ul>
+
+    <div class="rule large"></div>
+
+    <p>Répondez à ce mail avec :</p>
+    <ol>
+      <li>Votre <span class="strong">nom de code</span></li>
+      <li>Un indice sur votre théorie <span class="subtle">(1 phrase max)</span></li>
+      <li>Votre signe secret <span class="subtle">(sans l'expliquer)</span></li>
+    </ol>
+
+    <p>À très bientôt.</p>
+
+    <div class="footer">
+      <p><span class="strong">La secrétaire du Gardien de la Théorie Ultime</span></p>
+      <p>Cellule d’Observation – Département des Coïncidences</p>
+    </div>
+
+    <div class="rule bottom"></div>
+
+    <p class="small">P.S : Si vous avez reçu ce message, merci de ne pas en parler.</p>
+
+    <div class="seal-mark" aria-hidden="true"></div>
+    <img class="seal" src="sceau_transparent.png" alt="Sceau rouge" />
+  </main>
+</body>
+</html>
